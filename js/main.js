@@ -4,14 +4,20 @@ const tagResultado = document.querySelector(".resultado p");
 const popUpResultado = document.querySelector(".resultado");
 
 function pegarDadosFormulario() {
+    
     const valorCampo = textarea.value;
-    const listaNomes = valorCampo.split(",");//Separou pelas as vírgulas e transformou em um array
-    const tamanhoArray = listaNomes.length;
-    const posicaoNome = gerarNomeAleatorio(tamanhoArray);
-    const nome = listaNomes[posicaoNome];
-    mostrarResultado(nome);
 
-    textarea.value = "";
+    if(valorCampo == ""){
+        tagResultado.innerHTML = `Insira nomes`;
+    }
+    else{
+        const listaNomes = valorCampo.split(",");//Separou pelas as vírgulas e transformou em um array
+        const tamanhoArray = listaNomes.length;
+        const posicaoNome = gerarNomeAleatorio(tamanhoArray);
+        const nome = listaNomes[posicaoNome];
+        mostrarResultado(nome);
+
+        textarea.value = "";}
 }   
 
 btnSortear.addEventListener("click", pegarDadosFormulario);
